@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Script that creates and distributes an archive to your web servers"""
 from fabric.api import env, put, run, local
 from os.path import exists, isdir
 from datetime import datetime

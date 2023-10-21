@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Script to deploy web static"""
 from fabric.api import env, put, run
 from os.path import exists
 
