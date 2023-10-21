@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """Script to deploy web static"""
-from fabric.api import env, put, run
-from os.path import exists
+from fabric.api import *
+from os.path import exists, splitext
 
-env.hosts = ['52.91.147.26', '100.25.188.140']
+
+env.hosts = ["52.91.147.26", "100.25.188.140"]
 
 
 @task
