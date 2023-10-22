@@ -216,37 +216,73 @@ class HBNBCommand(cmd.Cmd):
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
-    def do_all(self, args):
-        """ Shows all objects, or all objects of a class"""
-        print_list = []
+    # def do_all(self, args):
+    #     """ Shows all objects, or all objects of a class"""
+    #     print_list = []
 
-        if args:
-            args = args.split(' ')[0]  # remove possible trailing args
-            if args not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-                return
-            for k, v in storage._FileStorage__objects.items():
-                if k.split('.')[0] == args:
-                    print_list.append(str(v))
-        else:
-            for k, v in storage._FileStorage__objects.items():
+    #     if args:
+    #         args = args.split(' ')[0]  # remove possible trailing args
+    #         if args not in HBNBCommand.classes:
+    #             print("** class doesn't exist **")
+    #             return
+    #         for k, v in storage._FileStorage__objects.items():
+    #             if k.split('.')[0] == args:
+    #                 print_list.append(str(v))
+    #     else:
+    #         for k, v in storage._FileStorage__objects.items():
+    #             print_list.append(str(v))
+
+    #     print(print_list)
+
+
+def do_all(self, args):
+    """ Shows all objects, or all objects of a class"""
+    print_list = []
+
+    if args:
+        args = args.split(' ')[0]  # remove possible trailing args
+        if args not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        for k, v in (storage._FileStorage__objects.items(
+
+        ) if isinstance(storage, FileStorage) else {}):
+            if k.split('.')[0] == args:
                 print_list.append(str(v))
+    else:
+        for k, v in (storage._FileStorage__objects.items(
 
-        print(print_list)
+        ) if isinstance(storage, FileStorage) else {}):
+            print_list.append(str(v))
+
+    print(print_list)
+
+# hhbbbtbbbbbbbbttttttt
 
     def help_all(self):
         """ Help information for the all command """
         print("Shows all objects, or all of a class")
         print("[Usage]: all <className>\n")
 
+    # def do_count(self, args):
+    #     """Count current number of class instances"""
+    #     count = 0
+    #     for k, v in storage._FileStorage__objects.items():
+    #         if args == k.split('.')[0]:
+    #             count += 1
+    #     print(count)
+
     def do_count(self, args):
         """Count current number of class instances"""
         count = 0
-        for k, v in storage._FileStorage__objects.items():
+        for k, v in (storage._FileStorage__objects.items(
+
+        ) if isinstance(storage, FileStorage) else {}):
             if args == k.split('.')[0]:
                 count += 1
         print(count)
 
+# bbbbbbbbbbbbbbbbbbbbbbb
     def help_count(self):
         """ """
         print("Usage: count <class_name>")
