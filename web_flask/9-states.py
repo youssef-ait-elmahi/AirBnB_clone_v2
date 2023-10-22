@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/states', strict_slashes=False)
 @app.route('/states/<id>', strict_slashes=False)
 def states_list(id=None):
+    """def states_list(id=None):"""
     if id:
         states = storage.all(State).values()
         for state in states:
@@ -22,6 +23,7 @@ def states_list(id=None):
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """def teardown_db(exception):"""
     storage.close()
 
 
